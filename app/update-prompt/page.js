@@ -13,7 +13,7 @@ const EditPrompt = () => {
         prompt:'',
         tag:'',
     });
-
+    const LoadingFallback = () => <div>Loading...</div>;
     useEffect(()=>{
         const getPromptDetails = async()=>{
             const response=await fetch(`/api/prompt/${promptId}`)
@@ -51,6 +51,7 @@ const EditPrompt = () => {
       }
     }
   return (
+    <Suspense fallback={<LoadingFallback />}> 
     <Form
     type="Edit"
     post={post}
@@ -58,6 +59,7 @@ const EditPrompt = () => {
     submitting={submitting}
     handleSubmit={UpdatePrompt}
     />
+    </Suspense>
   )
 }
 
