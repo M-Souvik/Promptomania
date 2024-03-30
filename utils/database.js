@@ -1,6 +1,6 @@
 // for connecting database
 import mongoose from "mongoose";
-
+const MONGODB_URI='mongodb+srv://Souvik:Zstar246@cluster0.pqchhcz.mongodb.net/share_prompt'
 let isConnected=false;
 
 export const connectToDB = async ()=>{
@@ -12,7 +12,7 @@ export const connectToDB = async ()=>{
     }
 
     try {
-        await mongoose.connect(process.env.MONGODB_URI,{
+        await mongoose.connect(MONGODB_URI,{
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
